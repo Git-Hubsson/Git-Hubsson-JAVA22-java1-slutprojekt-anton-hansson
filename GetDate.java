@@ -4,6 +4,7 @@ import java.time.temporal.WeekFields;
 import java.util.Locale;
 
 public class GetDate {
+    String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     public LocalDate thisWeeksDates(int x) {
         LocalDate now = LocalDate.now();
@@ -11,6 +12,5 @@ public class GetDate {
         return now.with(fieldISO, x);
     }
 
-    String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
 }

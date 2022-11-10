@@ -8,9 +8,10 @@ import java.time.LocalDate;
 import static javax.swing.BoxLayout.X_AXIS;
 
 public class GUI extends JFrame {
-
+    GetDate getDateObject = new GetDate();
+    LocalDate today = LocalDate.now();
     GUI() {
-        Image icon = Toolkit.getDefaultToolkit().getImage("C:\\Users\\anton\\OneDrive\\Skrivbord\\Java22\\Javaprogrammering\\IntelliJ\\slutprojekt\\src\\Calendar.jpg");
+        Image icon = Toolkit.getDefaultToolkit().getImage(".\\src\\Calendar.jpg");
         super.setIconImage(icon);
         super.setTitle("Calendar");
         super.setSize(1414, 737);
@@ -31,7 +32,6 @@ public class GUI extends JFrame {
         }
     }
 
-    GetDate getDateObject = new GetDate();
     public void createAndAddComponentsToDayPanel(JPanel dayPanel, int day) {
         JLabel date = new JLabel(getDateObject.thisWeeksDates(day).toString());
         date.setAlignmentX(CENTER_ALIGNMENT);
@@ -124,7 +124,6 @@ public class GUI extends JFrame {
         });
     }
     public void markCurrentDay(int day, JLabel date, JLabel nameOfTheDay, JPanel dayPanel) {
-        LocalDate today = LocalDate.now();
         if ((getDateObject.thisWeeksDates(day)).getDayOfYear() == today.getDayOfYear()) {
             date.setForeground(Color.WHITE);
             nameOfTheDay.setForeground(Color.WHITE);
