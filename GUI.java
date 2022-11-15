@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
-
 import static javax.swing.BoxLayout.X_AXIS;
 
 public class GUI extends JFrame {
@@ -37,7 +36,7 @@ public class GUI extends JFrame {
         JLabel date = new JLabel(getDateObject.thisWeeksDates(day).toString());
         date.setAlignmentX(CENTER_ALIGNMENT);
 
-        JLabel nameOfTheDay = new JLabel(getDateObject.weekDays[day - 1]);
+        JLabel nameOfTheDay = new JLabel(String.valueOf(getDateObject.thisWeeksDates(day).getDayOfWeek()));
         nameOfTheDay.setAlignmentX(CENTER_ALIGNMENT);
         markCurrentDay(day, date, nameOfTheDay, dayPanel);
 
