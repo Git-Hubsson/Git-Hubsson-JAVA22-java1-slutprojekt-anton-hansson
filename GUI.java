@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+
 import static javax.swing.BoxLayout.X_AXIS;
 
 public class GUI extends JFrame {
     GetDate getDateObject = new GetDate();
+
     GUI() {
         Image icon = Toolkit.getDefaultToolkit().getImage(".\\src\\Calendar.jpg");
         super.setIconImage(icon);
@@ -23,7 +25,7 @@ public class GUI extends JFrame {
             JPanel dayPanel = new JPanel();
             dayPanel.setLayout(new BoxLayout(dayPanel, BoxLayout.PAGE_AXIS));
             dayPanel.setBounds((i - 1) * 200, 0, 200, 700);
-            dayPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2,true));
+            dayPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
             createAndAddComponentsToDayPanel(dayPanel, i);
             super.add(dayPanel);
             super.setVisible(true);
@@ -65,7 +67,7 @@ public class GUI extends JFrame {
         ActionListener bListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            //Makes sure that the textfield has a valid input
+                //Makes sure that the textfield has a valid input
                 if (inputAreaForEvent.getText().isEmpty() || inputAreaForEvent.getText().equals("Add event...")
                         || inputAreaForEvent.getText().equals("Please add an event before \npressing \"Add\"")) {
                     inputAreaForEvent.setText("Please add an event before \npressing \"Add\"");
@@ -122,14 +124,15 @@ public class GUI extends JFrame {
             }
         });
     }
+
     public void markCurrentDay(int day, JLabel date, JLabel nameOfTheDay, JPanel dayPanel) {
-        LocalDate today = LocalDate.now();
-        if ((getDateObject.thisWeeksDates(day)).getDayOfYear() == today.getDayOfYear()) {
+        if ((getDateObject.thisWeeksDates(day)).getDayOfYear() == LocalDate.now().getDayOfYear()) {
             date.setForeground(Color.WHITE);
             nameOfTheDay.setForeground(Color.WHITE);
             dayPanel.setBackground(Color.LIGHT_GRAY);
         }
     }
+
     //Makes the "Add event..." text come back if the user clicks outside the textarea
     public void resetTextAreas(JTextArea addEvent) {
         addMouseListener(new MouseAdapter() {
