@@ -9,7 +9,6 @@ import static javax.swing.BoxLayout.X_AXIS;
 
 public class GUI extends JFrame {
     GetDate getDateObject = new GetDate();
-    LocalDate today = LocalDate.now();
     GUI() {
         Image icon = Toolkit.getDefaultToolkit().getImage(".\\src\\Calendar.jpg");
         super.setIconImage(icon);
@@ -124,6 +123,7 @@ public class GUI extends JFrame {
         });
     }
     public void markCurrentDay(int day, JLabel date, JLabel nameOfTheDay, JPanel dayPanel) {
+        LocalDate today = LocalDate.now();
         if ((getDateObject.thisWeeksDates(day)).getDayOfYear() == today.getDayOfYear()) {
             date.setForeground(Color.WHITE);
             nameOfTheDay.setForeground(Color.WHITE);
